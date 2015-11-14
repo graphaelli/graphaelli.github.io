@@ -47,7 +47,7 @@ d13320582ff2        221c07e4f85c        "/bin/sh -c /bin/true"   1 seconds ago  
 
 Now start a postgres server (using an image from Docker Hub here) using the volume from that data container:
 {% highlight console %}
-$ docker run -d --volumes-from=postgres-data postgres
+$ docker run -d --volumes-from postgres-data --name postgres postgres
 146ad1bcbb45c74100f5345facff8be2ba9a532cbe0c5642a0c0bf840b4234e4
 {% endhighlight %}
 
