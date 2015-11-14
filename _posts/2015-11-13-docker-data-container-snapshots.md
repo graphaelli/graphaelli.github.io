@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Docker Data Container Snaphots"
+title:  "Docker Data Container Snapshots"
 date:   2015-11-13 17:10:02
 ---
 It's straightforward to create a data container with pre-baked archives included: `COPY` them on during `docker build` and off you go.  But what if you can't or don't want to create the data ahead of time?
