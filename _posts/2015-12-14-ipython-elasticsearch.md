@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "ipython-elasticsearch"
+title:  "Elasticsearch magic for IPython"
 date:   2015-12-14 05:00:00
 ---
 
