@@ -1,8 +1,7 @@
 # Site settings
 title:
 email: g@raphaelli.com
-description: >
-  gil's weblog
+description: Gilad Raphaelli
 baseurl: ""
 url: "http://g.raphaelli.com"
 github_username: graphaelli
