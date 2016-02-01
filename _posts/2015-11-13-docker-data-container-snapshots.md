@@ -113,9 +113,5 @@ if you used the `--name` flag on `docker run` earlier, you can snapshot with:
 
 I hope that helps.  Please let me know if I screwed anything up.
 
-<a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="Docker Data Container Snapshots" data-url="http://g.raphaelli.com/2015/11/13/docker-data-container-snapshots.html">Vote on HN</a>
-
 [RealScout]: http://realscout.com
 [jpetazzo]: http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
-
-<script src="//hnbutton.appspot.com/static/hn.min.js" async defer></script>
