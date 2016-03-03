@@ -9,7 +9,7 @@ linkedin_username: graphaelli
 twitter_username: graphaelli
 
 # github defaults
-highlighter: pygments
+highlighter: rouge
 safe: true
 lsi: false
 
