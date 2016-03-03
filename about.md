@@ -6,6 +6,8 @@ permalink: /about/
 
 Gil Raphaelli
 
-- living near [1/4 mi from] Philadelphia, PA, USA
-- working at [RealScout Inc.](http://realscout.com/)
-- expressing my own views on this site
+I'm a software developer with [RealScout Inc.](http://realscout.com/) living just outside the western city line of
+Philadelphia, PA.
+
+I can be reached g [at] raphaelli.com , /graphaelli on most services like
+[github](https://github.com/graphaelli) and [linkedin](https://www.linkedin.com/in/graphaelli), and gilad on freenode.
