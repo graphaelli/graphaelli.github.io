@@ -8,7 +8,7 @@ My former [employer](http://monetate.com) quietly open sourced a handy utility f
 hosts a few weeks ago.  As I've mentioned [previously](/2015/11/20/docker-s3-private-registry.html), there are a few
 projects in this space, but none quite as simple as this one to get going.
 
-ectou-metadata includes an implementation of the IAM security credential API that, to applications, feels exactly like
+[ectou-metadata](https://github.com/monetate/ectou-metadata) includes an implementation of the IAM security credential API that, to applications, feels exactly like
 running on an EC2 instance launched with an IAM Role.  This means no more injecting credentials into containers needing
 AWS API access.  It also helps increase [dev prod parity](http://12factor.net/dev-prod-parity).
 
