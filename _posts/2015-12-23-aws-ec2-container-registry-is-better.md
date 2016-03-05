@@ -5,7 +5,7 @@ date:   2015-12-23 00:00:00
 ---
 
 I spent some of today with EC2 Container Registry following it's promotion to [GA][aws-ecr-ga] status and it's clear
-that it's far better than what I [was using](/2015/11/19/docker-s3-private-registry.html).  For $0.07 more per
+that it's far better than what I [was using](/2015/11/20/docker-s3-private-registry.html).  For $0.07 more per
 GB-month, you get the same features as any other private registry service:
 
 - no need to run a local registry on every host
