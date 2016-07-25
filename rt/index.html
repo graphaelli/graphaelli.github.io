@@ -134,6 +134,32 @@
         getRouteTable(map);
      };
      map.on('click', onMapClick);
+
+     var commonDestinations = {
+	 '30th Street Station': L.latLng(39.95576, -75.182284),
+	 '69th Street Station': L.latLng(39.9617698, -75.2587492),
+	 'City Hall': L.latLng(39.95258, -75.1636),
+	 'Fern Rock': L.latLng(40.041751, -75.1375522),
+	 'Frankford': L.latLng(40.0233695,-75.0770458),
+	 'Stadiums': L.latLng(39.90613, -75.17377)
+     };
+
+     function setCommonDestination(name) {
+	 cdst = {'latlng': commonDestinations[name]};
+	 cdst.feature = {'properties': {'label': name}};
+	 setDestination(cdst);
+     }
+
+     var x = function() {
+	 var commondsthtml = '<p>Common Destinations<ul>';
+	 commonDestinationNames = Object.keys(commonDestinations);
+	 for (var i = 0; i < commonDestinationNames.length; i++) {
+	     commondsthtml += '<li>' + '<a href="#" onclick="setCommonDestination(\'' + commonDestinationNames[i] + '\');return false;">' + commonDestinationNames[i] + '</a></li>';
+	 }
+	 common = document.getElementById('help');
+	 common.innerHTML = commondsthtml + '</ul></p>';
+     }();
+
     </script>
     <script>
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
