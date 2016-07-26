@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="https://mapzen.com/tangram/0.8/tangram.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.1/leaflet-geocoder-mapzen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.4.1/leaflet-geocoder-mapzen.js"></script>
     <style>
@@ -104,11 +105,21 @@
 	 geocoder.collapse();
      }
 
+     params = location.search.slice(1).split('&').reduce(function(o, t) { var keyValue = t.split('='); o[keyValue[0]] = keyValue[1]; return o; }, {})
+
      var map = L.map('map').setView([39.981173, -75.275333], 13);
-     L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png', {
-	 attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
-	 maxZoom: 18,
-     }).addTo(map);
+
+     if (params.vector || Math.random() < 0.1) {
+	 Tangram.leafletLayer({
+	     scene: 'https://tangrams.github.io/bubble-wrap/bubble-wrap.yaml',
+	     attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | <a href="http://www.openstreetmap.org/about" target="_blank">&copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>',
+	 }).addTo(map);
+     } else {
+	 L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png', {
+	     attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+	     maxZoom: 18
+	 }).addTo(map);
+     }
 
      var geocoder_options = {
 	 // not supported by automplete
