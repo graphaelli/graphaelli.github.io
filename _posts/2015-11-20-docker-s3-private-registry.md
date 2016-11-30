@@ -4,7 +4,7 @@ title:  "Docker S3-Backed Private Registry On Every Host"
 date:   2015-11-20 02:04:51
 ---
 
-# **Update** - AWS has since released a [private registry service](/2015/12/22/aws-ec2-container-registry-is-better.html)
+# **Update** - AWS has since released a [private registry service](/2015/12/23/aws-ec2-container-registry-is-better.html)
 
 I attended [this talk][Talk] at a [GoLangPhilly][GoLangPhilly] meetup back in August where the speaker,
 [Peter Shannon][pietrojs], detailed the setup his company has been using to run docker in production.  Every host there
