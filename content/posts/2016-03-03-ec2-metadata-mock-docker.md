@@ -1,8 +1,7 @@
----
-layout: post
-title:  "EC2 Metadata service mocking with Docker"
-date:   2016-03-03 12:00:00
----
++++
+title = "EC2 Metadata service mocking with Docker"
+date = 2016-03-03T00:00:00-05:00
++++
 
 My former [employer](http://monetate.com) quietly open sourced a handy utility for mocking out the metadata service on AWS' EC2
 hosts a few weeks ago.  As I've mentioned [previously](/2015/11/20/docker-s3-private-registry.html), there are a few
@@ -18,26 +17,26 @@ First, build the docker container image.  I've contributed a [Dockerfile](https:
 
 Next, plumb the well-known address in the docker-machine VM:
 
-{% highlight bash %}
+{{< highlight bash >}}
 docker-machine ssh <machine-label> sudo ip addr add 169.254.169.254 dev eth0
-{% endhighlight %}
+{{< /highlight >}}
 
 Finally, launch a container bound to that IP.  This works with `--net` if using docker networking.
 
-{% highlight bash %}
+{{< highlight bash >}}
 docker run \
   --env=MOCK_METADATA_ROLE_ARN=arn:aws:iam::ACCOUNT:role/ROLE \
   --publish=169.254.169.254:80:5000 \
   --volume=$HOME/.aws/mock-metadata-credentials:/home/ec2-user/.aws/credentials:ro \
   ectou-metadata
-{% endhighlight %}
+{{< /highlight >}}
 
 If everything is wired up correctly you'll see 200s logged by the ectou-metadata service when making API calls, like:
 
-{% highlight bash %}
+{{< highlight bash >}}
 172.17.0.1 - - [01/Feb/2016 18:54:29] "GET /latest/meta-data/iam/security-credentials/ HTTP/1.1" 200 9
 172.17.0.1 - - [01/Feb/2016 18:54:29] "GET /latest/meta-data/iam/security-credentials/role-name HTTP/1.1" 200 641
-{% endhighlight %}
+{{< /highlight >}}
 
 Other containers running on this VM that have network access will be able to use these credentials.
 

@@ -1,8 +1,7 @@
----
-layout: post
-title:  "AWS EC2 Container Registry is Better"
-date:   2015-12-23 00:00:00
----
++++
+title = "AWS EC2 Container Registry is Better"
+date = 2015-12-23T00:00:16-05:00
++++
 
 I spent some of today with EC2 Container Registry following it's promotion to [GA][aws-ecr-ga] status and it's clear
 that it's far better than what I [was using](/2015/11/20/docker-s3-private-registry.html).  For $0.07 more per
@@ -16,19 +15,19 @@ But you also get **IAM permissions** based access control!
 
 The docs and AWS console walkthrough are great for getting started, the brief version is:
 
-{% highlight bash %}
+{{< highlight bash >}}
 pip install -U awscli
 aws ecr create-repository --repository-name <name>
 $(aws ecr get-login --region us-east-1)
 # docker tag, push ...
-{% endhighlight %}
+{{< /highlight >}}
 
 
 ## docker pull permissions
 
 The policy looks like this for the role and user, using awacs and troposphere:
 
-{% highlight python %}
+{{< highlight python >}}
 # Permit AWS-hosted docker registry access
 from awacs.aws import Allow, Everybody, Policy, Statement
 import awacs.iam as iam
@@ -54,11 +53,11 @@ troposphere.iam.Policy(
 		]
 	)
 )
-{% endhighlight %}
+{{< /highlight >}}
 
 and generates:
 
-{% highlight json %}
+{{< highlight json >}}
 "Policies": [
 	"PolicyName": "DockerRegistryConsumerPolicy",
 	{
@@ -83,7 +82,7 @@ and generates:
 		}
 	}
 ]
-{% endhighlight %}
+{{< /highlight >}}
 
 This permits login, pulling images, and browsing the repositories.  Since we're using AWS, command line tools to
 substitute for `docker search` are easily within reach

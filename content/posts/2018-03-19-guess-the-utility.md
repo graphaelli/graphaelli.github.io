@@ -1,8 +1,10 @@
----
-layout: post
-title:  "Guess the utility"
-date:   2018-03-19 22:22:22
----
++++
+title = "Guess the utility"
+date = 2018-03-19T22:22:22-05:00
++++
+
+{{< rawhtml >}}
+
 <style>
 .description { cursor: pointer; }
 .solution { cursor: pointer; }
@@ -17,14 +19,20 @@ solution2 = "<code>/usr/bin/time --format='rss:%M user:%U sys:%S real:%E'</code>
 desc3 = "run a program with process address space resource limit";
 solution3 = "<code>/usr/bin/prlimit -v</code>";
 </script>
-I invented a couple of utilities at work today.  They're really useful little go programs.  So useful, in fact, 
-that they have already existed for many years.  I haven't written in a while so I figured I'd post them here as a little
-guessing game.  See if you can figure out what they are from the code, just note that they are not faithful
-reimplementations, as I didn't originally set out to reimplement anything.  Expand the description for a hint.
+
+{{< /rawhtml >}}
+
+I invented a couple of utilities at work today. They're really useful little go programs. So useful, in fact,
+that they have already existed for many years. I haven't written in a while so I figured I'd post them here as a little
+guessing game. See if you can figure out what they are from the code, just note that they are not faithful
+reimplementations, as I didn't originally set out to reimplement anything. Expand the description for a hint.
+
+{{< rawhtml >}}
 
 <h3>#1</h3>
+{{< /rawhtml >}}
 
-{% highlight go %}
+{{< highlight go >}}
 {
         ctx, _ := context.WithTimeout(context.Background(), timeout)
         cmd := exec.CommandContext(ctx, os.Args[1], os.Args[2:]...)
@@ -37,14 +45,17 @@ reimplementations, as I didn't originally set out to reimplement anything.  Expa
         }
         os.Exit(exitCode(err))
 }
-{% endhighlight %}
+{{< /highlight >}}
+
+{{< rawhtml >}}
 
 <p class="description" onClick="this.innerHTML=desc1">description</p>
 <p class="solution" onClick="this.innerHTML=solution1">solution</p>
 
 <h3>#2</h3>
+{{< /rawhtml >}}
 
-{% highlight go %}
+{{< highlight go >}}
 {
 	cmd := exec.Command(os.Args[1], os.Args[2:]...)
 	cmd.Stdout, cmd.Stderr, cmd.Stdin = os.Stdout, os.Stderr, os.Stdin
@@ -61,14 +72,17 @@ reimplementations, as I didn't originally set out to reimplement anything.  Expa
 	fmt.Printf("rss:%d user:%s sys:%s real:%s\n", rusage.Maxrss, time.Duration(rusage.Utime.Nano())*time.Nanosecond, time.Duration(rusage.Stime.Nano())*time.Nanosecond, end.Sub(start))
 	os.Exit(exitCode(err))
 }
-{% endhighlight %}
+{{< /highlight >}}
+
+{{< rawhtml >}}
 
 <p class="description" onClick="this.innerHTML=desc2">description</p>
 <p class="solution" onClick="this.innerHTML=solution2">solution</p>
 
 <h3>#3</h3>
+{{< /rawhtml >}}
 
-{% highlight go %}
+{{< highlight go >}}
 {
        var rlimit syscall.Rlimit
        rlimit.Cur = 134217728
@@ -84,9 +98,12 @@ reimplementations, as I didn't originally set out to reimplement anything.  Expa
        }
        os.Exit(exitCode(err))
 }
-{% endhighlight %}
+{{< /highlight >}}
+
+{{< rawhtml >}}
 
 <p class="description" onClick="this.innerHTML=desc3">description</p>
 <p class="solution" onClick="this.innerHTML=solution3">solution</p>
+{{< /rawhtml >}}
 
 If you like this kind of thing, many other utilities can be found in [go-coreutils](https://github.com/ericlagergren/go-coreutils).

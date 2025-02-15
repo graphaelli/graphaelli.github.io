@@ -1,9 +1,7 @@
----
-layout: post
-title:  "A tech job search in 2017"
-date:   2017-11-11 12:00:00
----
-Yesterday was my last day at RealScout.  This post isn't about what's next but rather the experience of finding that next thing.  I think the following will be helpful for job seekers in tech and possibly beyond.
++++
+title = "A tech job search in 2017"
+date = 2017-11-11T22:22:22-05:00
++++
 
 I started searching for a new role just over 2 months ago.  While I had passively reviewed messages from recruiters for awhile, I finally decided to give the search a real go, getting in touch with my network, switching my status to searching on AngelList & StackOverflow jobs, and applying to a few promising positions I had found through Indeed, in #golang-jobs on gophers slack, and elsewhere.  I was not interested in relocating so I targeted only Philadelphia-based, 1 day/week in NYC, or fully remote gigs.
 

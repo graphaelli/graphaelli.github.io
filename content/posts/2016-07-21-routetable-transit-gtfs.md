@@ -1,10 +1,9 @@
----
-layout: post
-title:  "Routetable - transit scheduling with GTFS"
-date:   2016-07-21 12:00:00
----
++++
+title = "Routetable - transit scheduling with GTFS"
+date = 2016-07-21T22:22:22-05:00
++++
 
-![Routetable screenshot](/assets/2016-07-21-routetable.png)
+![Routetable screenshot](/2016-07-21-routetable.png)
 
 I put together as a little [project](https://github.com/graphaelli/routetable) to get to know the
 [General Transit Feed Specification](https://developers.google.com/transit/gtfs/) and address some of the issues I have

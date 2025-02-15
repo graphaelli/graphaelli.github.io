@@ -1,8 +1,7 @@
----
-layout: post
-title:  "Docker S3-Backed Private Registry On Every Host"
-date:   2015-11-20 02:04:51
----
++++
+title = "Docker S3-Backed Private Registry On Every Host"
+date = 2015-11-20T02:04:18-05:00
++++
 
 # **Update** - AWS has since released a [private registry service](/2015/12/23/aws-ec2-container-registry-is-better.html)
 
@@ -35,7 +34,7 @@ I've given up on doing this with Cloudformation and just do this rare operation 
 Optional, but it's probably a good idea to turn on [server side encryption][SSE] for this bucket.  We use
 [troposphere][tropogit] to generate templates.  [This gist][ssegist] generates:
 
-{% highlight json %}
+{{< highlight json >}}
 {
     "Resources": {
         "DockerRegistryBucket": {
@@ -70,7 +69,7 @@ Optional, but it's probably a good idea to turn on [server side encryption][SSE]
         }
     }
 }
-{% endhighlight %}
+{{< /highlight >}}
 
 ## Configure bucket access permissions
 
@@ -81,7 +80,7 @@ we use IAM user policies to manage access.  I hope to spend some time with [aws-
 
 The policy looks like this for the role and user, using [this gist][ssegist]:
 
-{% highlight json %}
+{{< highlight json >}}
 "Policies": [
 	"PolicyName": "DockerRegistryConsumerPolicy",
 	{
@@ -110,15 +109,15 @@ The policy looks like this for the role and user, using [this gist][ssegist]:
 		}
 	}
 ]
-{% endhighlight %}
+{{< /highlight >}}
 
 This permits only pulls.  Add `s3:PutObject` for pushing.
 
 ## Run the registry container
 
 Using this config, `dev-config.yml` in my case:
-{% highlight yaml %}
----
+{{< highlight yaml >}}
++++
 version: 0.1
 log:
   level: info
@@ -144,11 +143,11 @@ health:
     enabled: true
     interval: 10s
     threshold: 3
-{% endhighlight %}
+{{< /highlight >}}
 
 and this `docker-compose.yml`:
-{% highlight yaml %}
----
+{{< highlight yaml >}}
++++
 registry:
   container_name: registry
   image: registry:2
@@ -157,23 +156,24 @@ registry:
   restart: always
   volumes:
     - ./dev-config.yml:/etc/docker/registry/config.yml:ro
-{% endhighlight %}
+{{< /highlight >}}
 
 You can `docker-compose up -d` on an EC2 box with the above policy attached to its IAM Role.
 
 Outside of EC2, use a similar `docker-compose.yml` with credentials mounted in via `volumes`:
-{% highlight yaml %}
+{{< highlight yaml >}}
+
 - ${HOME}/.aws/docker-credentials:/${REGISTRY_USER}/.aws/credentials:ro
-{% endhighlight %}
+  {{< /highlight >}}
 
 That credentials file follows the [standardized credentials][awscredstandard] file format.
 
 If all is well, you should be able to list the available repos:
 
-{% highlight console %}
+{{< highlight console >}}
 $ curl -s http://localhost:5000/v2/_catalog
 {"repositories":[]}
-{% endhighlight %}
+{{< /highlight >}}
 
 The docker docs are really quite good, [https://docs.docker.com/registry/introduction/][registry intro] is a great place
 to continue on from here.
