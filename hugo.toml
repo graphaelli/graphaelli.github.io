@@ -2,3 +2,6 @@ baseURL = 'https://g.raphaelli.com/'
 languageCode = 'en-us'
 title = 'g.raphaelli.com'
 theme = 'hugo-kiera'
+
+[params]
+  favicon = "/favicon.ico"
