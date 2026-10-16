@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="{{ .Site.Language.Locale | default "en" }}">
+
+<head>
+  <title>{{ if and (not .IsHome) (.Title) }}{{ .Params.Title }} - {{ end }}{{ .Site.Title }}</title>
+  {{ partial "meta" . }}
+  {{ partialCached "header_includes" . -}}
+
+  {{ if (templates.Exists "partials/header_supplement.html") }}
+    {{ partial "header_supplement.html" . -}}
+  {{ end }}
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      {{ partial "site_logo" . }}
+      <h1>
+        <a href="{{ relLangURL "" }}">{{ .Site.Title | markdownify }}</a>
+      </h1>
+
+      <ul id="social-media">
+        {{- range hugo.Sites -}}
+          {{ if ne .Language.Label $.Site.Language.Label }}
+            <li><a href="/{{ .Language.Lang }}">{{ .Language.Label }}</a></li>
+          {{ end }}
+        {{- end -}}
+        {{- with $.Site.Params.Author -}}
+          {{- $author := . -}}
+          {{- range hugo.Data.social.social_icons -}}
+            {{- if isset $author .id }}
+             <li>
+               <a href="{{ printf .url (index $author .id) }}" title="{{ .title }}">
+               <i class="{{ .icon }} fa-lg"></i>
+               </a>
+             </li>
+           {{- end -}}
+          {{ end }}
+        {{- end -}}
+      </ul>
+      {{ with .Site.Params.tagline }}
+      <p><em>{{ . | markdownify }}</em></p>
+      {{ end }}
+    </header>
+
+    {{ partial "nav" . }}
+
+    <main>
