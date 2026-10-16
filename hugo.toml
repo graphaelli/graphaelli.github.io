@@ -1,5 +1,5 @@
 baseURL = 'https://g.raphaelli.com/'
-languageCode = 'en-us'
+locale = 'en-US'
 title = 'g.raphaelli.com'
 theme = 'hugo-kiera'
 
