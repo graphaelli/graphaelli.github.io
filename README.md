@@ -12,7 +12,7 @@ Personal blog powered by [Hugo](https://gohugo.io/) and the [hugo-kiera](https:/
    ```
 2. **Hugo Extended**: If Hugo is not already on your path, install it using Go:
    ```bash
-   go install -tags extended github.com/gohugoio/hugo@v0.141.0
+   go install -tags extended github.com/gohugoio/hugo@v0.168.0
    ```
    Ensure `~/go/bin` is in your `$PATH` (e.g. `export PATH="$HOME/go/bin:$PATH"` in `~/.zshrc`).
 
